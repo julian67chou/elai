@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊萊診所 - 字體選擇測試</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 30px;
+            padding-bottom: 50px;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #10495C, #F19C32);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .font-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .font-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .font-card.selected {
+            border-color: #F19C32;
+            box-shadow: 0 0 0 3px rgba(241, 156, 50, 0.2);
+        }
+        
+        .font-sample {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #10495C;
+        }
+        
+        .font-name {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .font-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .apply-btn {
+            background-color: #10495C;
+            border-color: #10495C;
+            color: white;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .apply-btn:hover {
+            background-color: #0a3a4a;
+            border-color: #0a3a4a;
+        }
+        
+        .comparison-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .comparison-text {
+            font-size: 2rem;
+            color: #10495C;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .original-image {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .font-options {
+            margin-top: 20px;
+        }
+        
+        .font-option {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .font-option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .font-option.selected {
+            background-color: #10495C;
+            color: white;
+            border-color: #10495C;
+        }
+        
+        /* 字體定義 */
+        .font-noto-sans {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        
+        .font-noto-serif {
+            font-family: 'Noto Serif TC', serif;
+        }
+        
+        .font-ms-yahei {
+            font-family: 'Microsoft YaHei', '微軟雅黑', sans-serif;
+        }
+        
+        .font-pingfang {
+            font-family: 'PingFang SC', '蘋方-簡', 'Heiti SC', sans-serif;
+        }
+        
+        .font-heiti {
+            font-family: 'Heiti TC', '黑體-繁', sans-serif;
+        }
+        
+        .font-simsun {
+            font-family: 'SimSun', '宋體', serif;
+        }
+        
+        .font-yuanti {
+            font-family: 'YuanTi', '圓體', sans-serif;
+        }
+        
+        .font-source-han {
+            font-family: 'Source Han Sans TC', '思源黑體', sans-serif;
+        }
+        
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .font-open-sans {
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .font-lato {
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+    
+    <!-- 字體導入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Han+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header text-center">
+            <h1><i class="bi bi-fonts me-2"></i>伊萊診所字體選擇測試</h1>
+            <p class="lead mb-0">比較不同字體效果，選擇最接近截圖的字體</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="mb-4"><i class="bi bi-image me-2"></i>原始截圖參考</h3>
+                <div class="text-center mb-4">
+                    <img src="../screenshot-1776517900036.png" alt="原始截圖" class="original-image">
+                    <p class="text-muted">您提供的截圖參考 (OCR識別: "伊萊診所")</p>
+                </div>
+                
+                <div class="comparison-section">
+                    <h4 class="mb-4"><i class="bi bi-compass me-2"></i>字體即時比較</h4>
+                    
+                    <div class="mb-4">
+                        <label class="form-label">輸入測試文字:</label>
+                        <input type="text" id="testText" class="form-control mb-3" value="伊萊診所 Yi Life Clinic" placeholder="輸入測試文字...">
+                    </div>
+                    
+                    <div class="font-options">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="font-option font-noto-sans selected" data-font="noto-sans">
+                                    <strong>思源黑體 (Noto Sans TC)</strong>
+                                    <div class="small text-muted">當前網站字體</div>
+                                </div>
+                                
+                                <div class="font-option font-source-han" data-font="source-han">
+                                    <strong>思源黑體 TC (Source Han Sans)</strong>
+                                    <div class="small text-muted">Google 思源黑體繁體版</div>
+                                </div>
+                                
+                                <div class="font-option font-ms-yahei" data-font="ms-yahei">
+                                    <strong>微軟雅黑 (Microsoft YaHei)</strong>
+                                    <div class="small text-muted">Windows 標準中文字體</div>
+                                </div>
+                                
+                                <div class="font-option font-pingfang" data-font="pingfang">
+                                    <strong>蘋方 (PingFang SC)</strong>
+                                    <div class="small text-muted">macOS/iOS 標準中文字體</div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="font-option font-heiti" data-font="heiti">
+                                    <strong>黑體 (Heiti TC)</strong>
+                                    <div class="small text-muted">傳統黑體字型</div>
+                                </div>
+                                
+                                <div class="font-option font-noto-serif" data-font="noto-serif">
+                                    <strong>思源宋體 (Noto Serif TC)</strong>
+                                    <div class="small text-muted">傳統宋體風格</div>
+                                </div>
+                                
+                                <div class="font-option font-simsun" data-font="simsun">
+                                    <strong>宋體 (SimSun)</strong>
+                                    <div class="small text-muted">Windows 傳統中文字體</div>
+                                </div>
+                                
+                                <div class="font-option font-yuanti" data-font="yuanti">
+                                    <strong>圓體 (YuanTi)</strong>
+                                    <div class="small text-muted">圓潤親和風格</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="comparison-text font-noto-sans" id="comparisonText">
+                            伊萊診所 Yi Life Clinic
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="btn apply-btn" id="applyFontBtn">
+                                <i class="bi bi-check-circle me-1"></i> 套用此字體到網站
+                            </button>
+                            <div class="mt-2 small text-muted" id="selectedFontInfo">
+                                目前選擇: 思源黑體 (Noto Sans TC)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <h3 class="mb-4"><i class="bi bi-card-checklist me-2"></i>字體效果預覽</h3>
+                
+                <div class="font-card font-noto-sans">
+                    <div class="font-sample">伊萊診所</div>
+                    <div class="font-name">思源黑體 (Noto Sans TC)</div>
+                    <div class="font-desc">現代、簡潔、易讀性高，Google 免費字體</div>
+                    <button class="btn btn-sm apply-btn select-font-btn" data-font="noto-sans">選擇此字體</button>
+                </div>
+                
+                <div class="font-card font-source-han">
+                    <div class="font-sample">伊萊診所</div>
+                    <div class="font-name">思源黑體 TC (Source Han Sans)</div>
+                    <div class="font-desc">Adobe 與 Google 合作開發，完整繁體中文支援</div>
+                    <button class="btn btn-sm apply-btn select-font-btn" data-font="source-han">選擇此字體</button>
+                </div>
+                
+                <div class="font-card font-ms-yahei">
+                    <div class="font-sample">伊萊診所</div>
+                    <div class="font-name">微軟雅黑 (Microsoft YaHei)</div>
+                    <div class="font-desc">Windows 預設字體，清晰度高，廣泛使用</div>
+                    <button class="btn btn-sm apply-btn select-font-btn" data-font="ms-yahei">選擇此字體</button>
+                </div>
+                
+                <div class="font-card font-pingfang">
+                    <div class="font-sample">伊萊診所</div>
+                    <div class="font-name">蘋方 (PingFang SC)</div>
+                    <div class="font-desc">macOS/iOS 預設字體，優美現代感</div>
+                    <button class="btn btn-sm apply-btn select-font-btn" data-font="pingfang">選擇此字體</button>
+                </div>
+                
+                <div class="font-card font-heiti">
+                    <div class="font-sample">伊萊診所</div>
+                    <div class="font-name">黑體 (Heiti TC)</div>
+                    <div class="font-desc">傳統黑體，簡潔有力</div>
+                    <button class="btn btn-sm apply-btn select-font-btn" data-font="heiti">選擇此字體</button>
+                </div>
+                
+                <div class="font-card font-noto-serif">
+                    <div class="font-sample">伊萊診所</div>
+                    <div class="font-name">思源宋體 (Noto Serif TC)</div>
+                    <div class="font-desc">傳統宋體，正式專業感</div>
+                    <button class="btn btn-sm apply-btn select-font-btn" data-font="noto-serif">選擇此字體</button>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="alert alert-info">
+                        <h5><i class="bi bi-lightbulb me-2"></i>選擇建議</h5>
+                        <p class="mb-2">醫療網站推薦使用無襯線字體：</p>
+                        <ul class="mb-0">
+                            <li><strong>思源黑體</strong>：免費、易讀、現代感</li>
+                            <li><strong>微軟雅黑</strong>：Windows 相容性最佳</li>
+                            <li><strong>蘋方</strong>：macOS/iOS 最佳體驗</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <div class="alert alert-warning">
+                <h5><i class="bi bi-exclamation-triangle me-2"></i>重要提醒</h5>
+                <p class="mb-0">
+                    字體選擇會影響網站整體風格。選擇後請清除瀏覽器快取 (Ctrl+Shift+R) 以查看更新效果。
+                    如果找不到完全相同的字體，可以選擇最接近的風格。
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 當前選擇的字體
+        let selectedFont = 'noto-sans';
+        const fontClasses = {
+            'noto-sans': 'font-noto-sans',
+            'source-han': 'font-source-han',
+            'ms-yahei': 'font-ms-yahei',
+            'pingfang': 'font-pingfang',
+            'heiti': 'font-heiti',
+            'noto-serif': 'font-noto-serif',
+            'simsun': 'font-simsun',
+            'yuanti': 'font-yuanti',
+            'montserrat': 'font-montserrat',
+            'roboto': 'font-roboto',
+            'open-sans': 'font-open-sans',
+            'lato': 'font-lato'
+        };
+        
+        const fontNames = {
+            'noto-sans': '思源黑體 (Noto Sans TC)',
+            'source-han': '思源黑體 TC (Source Han Sans)',
+            'ms-yahei': '微軟雅黑 (Microsoft YaHei)',
+            'pingfang': '蘋方 (PingFang SC)',
+            'heiti': '黑體 (Heiti TC)',
+            'noto-serif': '思源宋體 (Noto Serif TC)',
+            'simsun': '宋體 (SimSun)',
+            'yuanti': '圓體 (YuanTi)',
+            'montserrat': 'Montserrat (英文字體)',
+            'roboto': 'Roboto (英文字體)',
+            'open-sans': 'Open Sans (英文字體)',
+            'lato': 'Lato (英文字體)'
+        };
+        
+        // 字體選擇功能
+        document.querySelectorAll('.font-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // 移除其他選中的樣式
+                document.querySelectorAll('.font-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // 添加當前選中的樣式
+                this.classList.add('selected');
+                
+                // 更新預覽文字
+                const font = this.dataset.font;
+                selectFont(font);
+            });
+        });
+        
+        // 卡片選擇按鈕
+        document.querySelectorAll('.select-font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const font = this.dataset.font;
+                
+                // 更新選項卡
+                document.querySelectorAll('.font-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                    if (opt.dataset.font === font) {
+                        opt.classList.add('selected');
+                    }
+                });
+                
+                // 更新預覽
+                selectFont(font);
+            });
+        });
+        
+        // 測試文字輸入
+        document.getElementById('testText').addEventListener('input', function() {
+            updateComparisonText();
+        });
+        
+        // 套用字體按鈕
+        document.getElementById('applyFontBtn').addEventListener('click', function() {
+            const fontName = fontNames[selectedFont];
+            const fontClass = fontClasses[selectedFont];
+            
+            alert(`已選擇字體: ${fontName}\n\n請告訴 Hermes 助手使用此字體更新網站。\n\n您也可以手動複製以下 CSS 代碼:\n\nfont-family: '${getFontFamily(selectedFont)}';`);
+            
+            // 顯示 CSS 代碼
+            const cssCode = `/* 更新網站字體為 ${fontName} */\n:root {\n  --font-family-primary: '${getFontFamily(selectedFont)}';\n}\n\nbody {\n  font-family: '${getFontFamily(selectedFont)}', sans-serif;\n}`;
+            
+            console.log(cssCode);
+        });
+        
+        // 選擇字體函數
+        function selectFont(font) {
+            selectedFont = font;
+            
+            // 更新預覽文字
+            updateComparisonText();
+            
+            // 更新顯示資訊
+            document.getElementById('selectedFontInfo').textContent = 
+                `目前選擇: ${fontNames[font]}`;
+        }
+        
+        // 更新比較文字
+        function updateComparisonText() {
+            const text = document.getElementById('testText').value || '伊萊診所 Yi Life Clinic';
+            const comparisonElement = document.getElementById('comparisonText');
+            
+            // 移除所有字體類別
+            Object.values(fontClasses).forEach(fontClass => {
+                comparisonElement.classList.remove(fontClass);
+            });
+            
+            // 添加當前選擇的字體類別
+            comparisonElement.classList.add(fontClasses[selectedFont]);
+            comparisonElement.textContent = text;
+        }
+        
+        // 獲取字體家族名稱
+        function getFontFamily(fontKey) {
+            const fontMap = {
+                'noto-sans': 'Noto Sans TC',
+                'source-han': 'Source Han Sans TC',
+                'ms-yahei': 'Microsoft YaHei',
+                'pingfang': 'PingFang SC',
+                'heiti': 'Heiti TC',
+                'noto-serif': 'Noto Serif TC',
+                'simsun': 'SimSun',
+                'yuanti': 'YuanTi',
+                'montserrat': 'Montserrat',
+                'roboto': 'Roboto',
+                'open-sans': 'Open Sans',
+                'lato': 'Lato'
+            };
+            
+            return fontMap[fontKey] || 'Noto Sans TC';
+        }
+        
+        // 初始化
+        updateComparisonText();
+    </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊萊診所 - 企業色系統預覽</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-dark-green: #10495C;
+            --primary-orange: #F19C32;
+            --secondary-orange: #F5B662;
+            --light-beige: #F8F4E9;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark-green), var(--primary-orange));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .color-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-swatch {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .color-info {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .color-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .color-hex {
+            font-family: monospace;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .usage-example {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--primary-dark-green);
+            border-color: var(--primary-dark-green);
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #0a3a4a;
+            border-color: #0a3a4a;
+        }
+        
+        .btn-secondary-custom {
+            background-color: var(--primary-orange);
+            border-color: var(--primary-orange);
+            color: white;
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: #d88528;
+            border-color: #d88528;
+        }
+        
+        .text-primary-custom {
+            color: var(--primary-dark-green) !important;
+        }
+        
+        .text-secondary-custom {
+            color: var(--primary-orange) !important;
+        }
+        
+        .badge-primary-custom {
+            background-color: var(--primary-dark-green);
+            color: white;
+        }
+        
+        .badge-secondary-custom {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+        
+        .color-combination {
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header text-center">
+            <h1><i class="bi bi-palette-fill me-2"></i>伊萊診所企業色系統</h1>
+            <p class="lead mb-0">專業醫療形象色彩搭配方案</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #10495C;">
+                        <div style="background-color: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px;">
+                            <i class="bi bi-tree-fill" style="color: #10495C; font-size: 24px;"></i>
+                        </div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">深藍綠色</div>
+                        <div class="color-hex">#10495C</div>
+                        <div class="mt-2">
+                            <small class="text-muted">RGB: 62, 92, 56</small><br>
+                            <small class="text-muted">HSL: 110°, 24%, 29%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #F19C32;">
+                        <div style="background-color: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px;">
+                            <i class="bi bi-sun-fill" style="color: #F19C32; font-size: 24px;"></i>
+                        </div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">溫暖橘色</div>
+                        <div class="color-hex">#F19C32</div>
+                        <div class="mt-2">
+                            <small class="text-muted">RGB: 255, 107, 53</small><br>
+                            <small class="text-muted">HSL: 17°, 100%, 60%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #F5B662;">
+                        <div style="background-color: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px;">
+                            <i class="bi bi-droplet-half" style="color: #F5B662; font-size: 24px;"></i>
+                        </div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">淺暖橘色</div>
+                        <div class="color-hex">#F5B662</div>
+                        <div class="mt-2">
+                            <small class="text-muted">RGB: 255, 140, 90</small><br>
+                            <small class="text-muted">HSL: 20°, 100%, 68%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #F8F4E9;">
+                        <div style="background-color: rgba(0,0,0,0.1); padding: 10px 15px; border-radius: 8px;">
+                            <i class="bi bi-file-earmark-text" style="color: #333; font-size: 24px;"></i>
+                        </div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">米色背景</div>
+                        <div class="color-hex">#F8F4E9</div>
+                        <div class="mt-2">
+                            <small class="text-muted">RGB: 248, 244, 233</small><br>
+                            <small class="text-muted">HSL: 45°, 52%, 94%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="usage-example">
+            <h3 class="mb-4 text-primary-custom"><i class="bi bi-paint-bucket me-2"></i>色彩應用範例</h3>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5>按鈕樣式</h5>
+                    <button class="btn btn-primary-custom me-2 mb-2">主要按鈕</button>
+                    <button class="btn btn-secondary-custom me-2 mb-2">次要按鈕</button>
+                    <button class="btn btn-outline-primary-custom mb-2" style="border-color: #10495C; color: #10495C;">外框按鈕</button>
+                </div>
+                
+                <div class="col-md-6">
+                    <h5>文字顏色</h5>
+                    <p class="text-primary-custom"><i class="bi bi-check-circle me-1"></i> 這是一段使用主要顏色的文字</p>
+                    <p class="text-secondary-custom"><i class="bi bi-check-circle me-1"></i> 這是一段使用次要顏色的文字</p>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5>標籤與徽章</h5>
+                    <span class="badge badge-primary-custom me-2 p-2">預防醫學</span>
+                    <span class="badge badge-secondary-custom me-2 p-2">心臟專科</span>
+                    <span class="badge bg-light text-dark me-2 p-2" style="border: 1px solid #ddd;">健康管理</span>
+                </div>
+                
+                <div class="col-md-6">
+                    <h5>色彩組合預覽</h5>
+                    <div class="d-flex">
+                        <div class="color-combination flex-grow-1 me-2" style="background: linear-gradient(90deg, #10495C 50%, #F19C32 50%);"></div>
+                        <div class="color-combination flex-grow-1" style="background: linear-gradient(90deg, #F19C32 50%, #F8F4E9 50%);"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h5>色彩意義說明</h5>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div style="width: 20px; height: 20px; background-color: #10495C; border-radius: 4px; margin-right: 10px;"></div>
+                                <div>
+                                    <strong>深藍綠色</strong><br>
+                                    <small class="text-muted">專業、自然、信任</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div style="width: 20px; height: 20px; background-color: #F19C32; border-radius: 4px; margin-right: 10px;"></div>
+                                <div>
+                                    <strong>溫暖橘色</strong><br>
+                                    <small class="text-muted">溫暖、活力、親切</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div style="width: 20px; height: 20px; background-color: #F5B662; border-radius: 4px; margin-right: 10px;"></div>
+                                <div>
+                                    <strong>淺暖橘色</strong><br>
+                                    <small class="text-muted">柔和、輔助、點綴</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div style="width: 20px; height: 20px; background-color: #F8F4E9; border-radius: 4px; margin-right: 10px;"></div>
+                                <div>
+                                    <strong>米色背景</strong><br>
+                                    <small class="text-muted">舒適、專業、閱讀友好</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="usage-example">
+            <h3 class="mb-4 text-primary-custom"><i class="bi bi-laptop me-2"></i>網站實際應用</h3>
+            <p>企業色系統已在網站中全面應用：</p>
+            <ul>
+                <li>導航列：使用深藍綠色背景</li>
+                <li>按鈕：主要按鈕使用深藍綠色，次要按鈕使用橘色</li>
+                <li>標題文字：主要標題使用深藍綠色，強調文字使用橘色</li>
+                <li>裝飾元素：使用淺暖橘色漸層裝飾</li>
+                <li>背景：部分區域使用米色背景提升閱讀舒適度</li>
+            </ul>
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle me-2"></i>
+                <strong>提示：</strong> 如果您在實際網站上看不到企業色，可能是瀏覽器快取問題。請嘗試清除快取或使用無痕視窗查看。
+            </div>
+            <a href="index.html" class="btn btn-primary-custom">
+                <i class="bi bi-eye me-1"></i> 查看實際網站
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>伊萊診所企業色系統預覽 &copy; 2026</p>
+            <p class="text-muted">色彩代碼：#10495C (深墨綠), #F19C32 (橘), #F5B662 (淺橘), #F8F4E9 (米)</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
