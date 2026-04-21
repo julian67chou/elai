@@ -1,0 +1,83 @@
+name: Test Sync - Simple Version
+
+on:
+  workflow_dispatch:  # 允許手動觸發
+  push:
+    branches: [ main ]
+
+jobs:
+  test-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout elai repository
+      uses: actions/checkout@v4
+    
+    - name: Test Secret Availability
+      run: |
+        echo "測試 Secret 是否可用..."
+        if [ -n "${{ secrets.ELAI1_SYNC_TOKEN }}" ]; then
+          echo "✅ Secret 已設置"
+          echo "Token preview: ${{ secrets.ELAI1_SYNC_TOKEN:0:8 }}..."
+        else
+          echo "❌ Secret 未設置"
+          exit 1
+        fi
+    
+    - name: Test GitHub API Access
+      env:
+        GITHUB_TOKEN: ${{ secrets.ELAI1_SYNC_TOKEN }}
+      run: |
+        echo "測試 GitHub API 訪問..."
+        
+        # 測試權杖是否有效
+        response=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/user)
+        
+        if echo "$response" | grep -q '"login"'; then
+          username=$(echo "$response" | grep '"login"' | cut -d'"' -f4)
+          echo "✅ 權杖有效 - 用戶: $username"
+        else
+          echo "❌ 權杖無效或權限不足"
+          echo "回應: $response"
+          exit 1
+        fi
+    
+    - name: Test elai1 Repository Access
+      env:
+        GITHUB_TOKEN: ${{ secrets.ELAI1_SYNC_TOKEN }}
+      run: |
+        echo "測試 elai1 倉庫訪問..."
+        
+        # 測試是否可以訪問 elai1 倉庫
+        response=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/julian67chou/elai1)
+        
+        if echo "$response" | grep -q '"name"'; then
+          reponame=$(echo "$response" | grep '"name"' | cut -d'"' -f4)
+          echo "✅ 可以訪問 elai1 倉庫: $reponame"
+        else
+          echo "❌ 無法訪問 elai1 倉庫"
+          echo "回應: $response"
+          exit 1
+        fi
+    
+    - name: Create Test File
+      run: |
+        echo "創建測試文件..."
+        echo "# GitHub Actions 測試 - $(date)" > test-actions.md
+        echo "這是一個測試文件，用於驗證 GitHub Actions 功能。" >> test-actions.md
+        echo "時間戳: $(date -Iseconds)" >> test-actions.md
+    
+    - name: Success Message
+      run: |
+        echo "🎉 所有測試通過！"
+        echo ""
+        echo "📋 測試結果:"
+        echo "✅ Secret 設置正確"
+        echo "✅ GitHub API 訪問正常"
+        echo "✅ elai1 倉庫權限正常"
+        echo ""
+        echo "💡 下一步: 可以啟用完整的同步工作流程"
