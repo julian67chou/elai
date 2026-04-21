@@ -1,0 +1,107 @@
+name: Fixed Auto Sync to elai1
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/workflows/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout elai
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+    
+    - name: Debug - Show Secret Info
+      run: |
+        echo "🔍 調試信息:"
+        echo "Secret 名稱: ELAI1_SYNC_TOKEN"
+        echo "Secret 是否存在: ${{ secrets.ELAI1_SYNC_TOKEN != '' }}"
+        echo "Secret 前8位: ${{ secrets.ELAI1_SYNC_TOKEN:0:8 }}..."
+    
+    - name: Sync to elai1 (Simple Method)
+      env:
+        SYNC_TOKEN: ${{ secrets.ELAI1_SYNC_TOKEN }}
+      run: |
+        echo "開始同步到 elai1..."
+        
+        # 驗證權杖
+        if [ -z "$SYNC_TOKEN" ]; then
+          echo "❌ 錯誤: SYNC_TOKEN 為空"
+          exit 1
+        fi
+        
+        echo "✅ 權杖已設置 (前8位: ${SYNC_TOKEN:0:8}...)"
+        
+        # 創建臨時目錄
+        TEMP_DIR=$(mktemp -d)
+        echo "臨時目錄: $TEMP_DIR"
+        
+        # 進入臨時目錄
+        cd "$TEMP_DIR"
+        
+        # 初始化 Git
+        git init
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        
+        # 複製 elai 的內容
+        echo "複製文件..."
+        cp -r "$GITHUB_WORKSPACE"/* .
+        cp -r "$GITHUB_WORKSPACE"/.* . 2>/dev/null || true
+        
+        # 刪除 .git 文件夾
+        rm -rf .git
+        
+        # 重新初始化
+        git init
+        git checkout -b main
+        git add .
+        
+        # 提交
+        COMMIT_MSG="Auto-sync from elai: ${{ github.event.head_commit.message || 'Manual sync' }}"
+        git commit -m "$COMMIT_MSG"
+        
+        # 添加遠端並推送
+        echo "推送到 elai1..."
+        git remote add origin "https://x-access-token:${SYNC_TOKEN}@github.com/julian67chou/elai1.git"
+        
+        # 嘗試推送
+        if git push -f origin main; then
+          echo "✅ 同步成功！"
+        else
+          echo "❌ 推送失敗"
+          echo "嘗試推送到 master 分支..."
+          if git push -f origin main:master; then
+            echo "✅ 推送到 master 分支成功"
+          else
+            echo "❌ 所有推送嘗試失敗"
+            exit 1
+          fi
+        fi
+        
+        # 清理
+        cd /
+        rm -rf "$TEMP_DIR"
+    
+    - name: Success Notification
+      if: success()
+      run: |
+        echo "🎉 同步完成！"
+        echo ""
+        echo "📊 同步報告:"
+        echo "• 來源: ${{ github.repository }}"
+        echo "• 目標: julian67chou/elai1"
+        echo "• 提交: ${{ github.sha }}"
+        echo "• 時間: $(date)"
+        echo ""
+        echo "🌐 Vercel 將會自動部署 elai1 的更新"
