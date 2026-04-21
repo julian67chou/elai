@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60">
+  <defs>
+    <style>
+      .text { font-family: Arial, sans-serif; font-weight: bold; }
+      .green { fill: #3E5C38; }
+      .orange { fill: #FF6B35; }
+    </style>
+  </defs>
+  
+  <!-- 心臟圖標 -->
+  <path class="orange" d="M30,30 
+    Q30,20 40,20 
+    Q50,20 50,30 
+    Q50,40 40,45 
+    Q30,40 30,30 
+    Z" />
+  
+  <!-- 醫療十字 -->
+  <rect class="green" x="38" y="25" width="4" height="10" />
+  <rect class="green" x="35" y="28" width="10" height="4" />
+  
+  <!-- 診所名稱 -->
+  <text class="text green" x="70" y="40" font-size="24">伊萊診所</text>
+  <text class="text orange" x="70" y="55" font-size="14" font-weight="normal">Elai Clinic</text>
+</svg>

@@ -1,0 +1,30 @@
+# 伊萊診所網站 robots.txt
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /content/
+Disallow: /blog/
+Disallow: /admin/
+
+Sitemap: https://elai-clinic.tw/sitemap.xml
+
+# 爬蟲設定
+Crawl-delay: 2
+
+# 歡迎搜尋引擎索引
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# 不索引暫存檔案
+User-agent: *
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /cache/
+
+# 歡迎所有友善的爬蟲

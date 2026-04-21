@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>醫師照片已更新 | 伊萊診所</title>
+<style>
+body {
+font-family: 'Noto Sans TC', sans-serif;
+line-height: 1.8;
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+background-color: #F8F4E9;
+color: #2C2C2C;
+}
+.container {
+background-color: white;
+border-radius: 10px;
+padding: 30px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+h1 {
+color: #10495C;
+border-bottom: 3px solid #F19C32;
+padding-bottom: 10px;
+}
+h2 {
+color: #10495C;
+margin-top: 30px;
+}
+.btn {
+display: inline-block;
+background-color: #F19C32;
+color: white;
+padding: 12px 24px;
+border-radius: 5px;
+text-decoration: none;
+font-weight: bold;
+margin: 10px 5px;
+transition: background-color 0.3s;
+}
+.btn:hover {
+background-color: #d88528;
+}
+.current-photo {
+text-align: center;
+margin: 30px 0;
+}
+.current-photo img {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+border: 5px solid #F8F4E9;
+object-fit: cover;
+}
+.steps {
+background-color: #F8F9FA;
+border-left: 5px solid #10495C;
+padding: 20px;
+margin: 20px 0;
+}
+code {
+background-color: #F1F1F1;
+padding: 2px 6px;
+border-radius: 3px;
+font-family: monospace;
+}
+.note {
+background-color: #FFF3CD;
+border-left: 5px solid #FFC107;
+padding: 15px;
+margin: 20px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div style="background: linear-gradient(135deg, #10495C, #F19C32); color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+<h3 style="margin: 0; color: white;">✅ 院長照片更新成功</h3>
+<p style="margin: 5px 0 0 0; opacity: 0.9;">施奕仲院長的專業照片已成功更新，網站現在使用真實照片增強信任感。</p>
+</div>
+<h1>更新施奕仲院長照片</h1>
+
+<div class="current-photo">
+<h3>當前使用照片</h3>
+<img src="assets/doctor-shih.jpg" 
+alt="當前醫師照片">
+<p><em>施奕仲院長真實照片（已更新）</em></p>
+</div>
+
+<div class="note">
+<strong>✅ 更新完成：</strong> 院長照片已更新為真實專業照片，增強網站可信度與專業形象。
+</div>
+
+<h2>方法一：直接替換圖片URL</h2>
+<div class="steps">
+<h3>步驟：</h3>
+<ol>
+<li>準備施奕仲院長的專業照片（建議 800×800 像素以上）</li>
+<li>將照片上傳到圖床服務（如 <a href="https://imgur.com">Imgur</a> 或 <a href="https://cloudinary.com">Cloudinary</a>）</li>
+<li>取得照片的直接連結URL</li>
+<li>編輯網站檔案：<code>/workspace/elai-clinic/index.html</code></li>
+<li>找到以下程式碼（約在第368行）：</li>
+</ol>
+<pre><code>&lt;img src="https://images.unsplash.com/photo-1622253692010..." 
+alt="施奕仲院長" class="doctor-img"&gt;</code></pre>
+<ol start="6">
+<li>將 <code>src</code> 屬性值替換為新的照片URL</li>
+<li>保存檔案並重新載入網站</li>
+</ol>
+</div>
+
+<h2>方法二：使用本地檔案</h2>
+<div class="steps">
+<h3>步驟：</h3>
+<ol>
+<li>將醫師照片命名為 <code>doctor-shih.jpg</code></li>
+<li>上傳到 <code>/workspace/elai-clinic/assets/</code> 目錄</li>
+<li>修改HTML程式碼為：</li>
+</ol>
+<pre><code>&lt;img src="/assets/doctor-shih.jpg" alt="施奕仲院長" class="doctor-img"&gt;</code></pre>
+</div>
+
+<h2>照片規格建議</h2>
+<ul>
+<li><strong>尺寸</strong>: 最小 400×400 像素，建議 800×800 像素</li>
+<li><strong>格式</strong>: JPG（高品質）或 PNG</li>
+<li><strong>背景</strong>: 白色或專業診所背景</li>
+<li><strong>服裝</strong>: 醫師袍或專業正式服裝</li>
+<li><strong>表情</strong>: 專業、親切、自信的微笑</li>
+<li><strong>光線</strong>: 明亮、均勻的自然光或專業打光</li>
+</ul>
+
+<div class="note">
+<h3>💡 拍攝建議</h3>
+<p>建議聘請專業攝影師拍攝，或使用高畫質手機在光線良好的環境下拍攝。</p>
+<p>照片應展現施奕仲院長作為心臟血管內科權威的專業形象。</p>
+</div>
+
+<h2>快速操作</h2>
+<a href="http://localhost:8080/" class="btn" target="_blank">查看當前網站</a>
+<a href="/workspace/elai-clinic/醫師照片管理指南.md" class="btn" download>下載完整指南</a>
+<a href="https://unsplash.com/s/photos/asian-doctor" class="btn" target="_blank">尋找替代圖片</a>
+
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd;">
+<p><strong>技術支援</strong>: 如有任何問題，請聯絡網站管理員。</p>
+<p><em>最後更新: 2025年4月18日（照片已更新）</em></p>
+</div>
+</div>
+</body>
+</html>

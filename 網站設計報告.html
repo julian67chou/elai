@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊萊診所網站設計報告</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 15mm;
+            background: #fff;
+        }
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+        h1, h2, h3, h4 {
+            color: #3E5C38;
+            border-bottom: 2px solid #FF6B35;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h1 { font-size: 28pt; text-align: center; }
+        h2 { font-size: 22pt; }
+        h3 { font-size: 18pt; }
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .color-item {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .service-card {
+            background: #F8F4E9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #FF6B35;
+        }
+        .doctor-profile {
+            background: #F8F4E9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #3E5C38;
+            color: white;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 10pt;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        @media print {
+            body { padding: 0; }
+            .page { max-width: none; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>伊萊診所網站設計報告</h1>
+            <p style="text-align: center; color: #666;">生成時間：2026年04月15日 12:32</p>
+        </div>
+        
+        <h2>一、設計主題</h2>
+        <p>採用深綠褐色、橘色與白色的專業醫療配色方案，強調預防醫學與現代整合療法。</p>
+        
+        <div class="color-palette">
+            <div class="color-item" style="background-color: #3E5C38;">深綠褐色<br>#3E5C38</div>
+            <div class="color-item" style="background-color: #FF6B35; color: #333;">橘色<br>#FF6B35</div>
+            <div class="color-item" style="background-color: #F8F4E9; color: #333;">米色背景<br>#F8F4E9</div>
+            <div class="color-item" style="background-color: #FFFFFF; color: #333; border: 1px solid #ccc;">白色<br>#FFFFFF</div>
+        </div>
+        
+        <h2>二、核心服務項目</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h4>分子點滴治療</h4>
+                <p>高濃度維生素、礦物質、抗氧化劑直接注入血液，快速提升免疫力與細胞修復能力。</p>
+            </div>
+            <div class="service-card">
+                <h4>靜脈雷射</h4>
+                <p>低能量雷射照射血液，促進紅血球攜氧能力，改善血液循環，增強細胞代謝功能。</p>
+            </div>
+            <div class="service-card">
+                <h4>SIS磁場治療</h4>
+                <p>特定頻率磁場共振，調節細胞電位，促進組織修復，緩解疼痛與發炎症狀。</p>
+            </div>
+            <div class="service-card">
+                <h4>氫氣治療</h4>
+                <p>氫分子強效抗氧化，清除有害自由基，減輕發炎反應，保護細胞免受損傷。</p>
+            </div>
+            <div class="service-card">
+                <h4>EECP體外反搏</h4>
+                <p>增加冠狀動脈血流，改善心臟功能，促進全身血液循環，降低血壓。</p>
+            </div>
+            <div class="service-card">
+                <h4>預防醫學諮詢</h4>
+                <p>個人化健康評估與風險管理，提供全方位預防策略，遠離慢性疾病。</p>
+            </div>
+        </div>
+        
+        <h2>三、院長介紹</h2>
+        <div class="doctor-profile">
+            <h3>施奕仲 院長</h3>
+            <p><strong>專長：</strong>預防醫學、分子點滴治療、靜脈雷射、SIS磁場療法、氫氣治療、EECP</p>
+            <p><strong>理念：</strong>「預防勝於治療」，致力於透過先進醫療技術幫助患者遠離慢性疾病，避免進入長照機構，實現「健康不進頤養家」的目標。</p>
+            <p><strong>經驗：</strong>擁有超過15年的臨床經驗，專注於預防醫學與整合治療。</p>
+        </div>
+        
+        <h2>四、網站技術規格</h2>
+        <table>
+            <tr>
+                <th>項目</th>
+                <th>規格</th>
+                <th>說明</th>
+            </tr>
+            <tr>
+                <td>前端框架</td>
+                <td>Bootstrap 5</td>
+                <td>響應式設計，支援各種裝置</td>
+            </tr>
+            <tr>
+                <td>CSS 預處理</td>
+                <td>純 CSS + CSS 變數</td>
+                <td>使用 CSS 變數管理配色方案</td>
+            </tr>
+            <tr>
+                <td>字體</td>
+                <td>思源黑體 (Noto Sans TC)</td>
+                <td>中文字體優化，確保中文顯示清晰</td>
+            </tr>
+            <tr>
+                <td>圖標庫</td>
+                <td>Bootstrap Icons</td>
+                <td>免費開源圖標，符合醫療主題</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>原生 JavaScript</td>
+                <td>減少依賴，提升載入速度</td>
+            </tr>
+            <tr>
+                <td>部署</td>
+                <td>GitHub Pages / Netlify</td>
+                <td>免費靜態託管，自動 SSL</td>
+            </tr>
+        </table>
+        
+        <h2>五、網站功能</h2>
+        <ul>
+            <li>響應式設計（手機、平板、電腦）</li>
+            <li>線上預約系統（表單驗證）</li>
+            <li>服務項目展示（六種先進療法）</li>
+            <li>院長專業介紹</li>
+            <li>健康資訊部落格（Markdown 管理）</li>
+            <li>聯絡資訊與 Google 地圖整合</li>
+            <li>SEO 優化（meta 標籤、sitemap、robots.txt）</li>
+            <li>PDF 報告生成功能</li>
+        </ul>
+        
+        <h2>六、管理與維護</h2>
+        <p>網站使用靜態架構，可透過以下方式管理：</p>
+        <ol>
+            <li><strong>自然語言更新：</strong>使用 Hermes Agent 直接以中文指令更新內容</li>
+            <li><strong>Markdown 管理：</strong>健康文章使用 Markdown 格式，易於編輯</li>
+            <li><strong>一鍵部署：</strong>執行 <code>./deploy.sh</code> 即可部署到線上</li>
+            <li><strong>自動化工作流程：</strong>GitHub Actions 自動部署與備份</li>
+        </ol>
+        
+        <div class="footer">
+            <p>本報告由 Hermes Agent 自動生成 | 檔案位置：/workspace/elai-clinic/網站設計報告.html</p>
+            <p>網站預覽：<a href="http://localhost:8080" target="_blank">http://localhost:8080</a>（本地測試伺服器）</p>
+            <p>提示：您可以在瀏覽器中列印此頁面為 PDF（Ctrl+P → 選擇「另存為 PDF」）</p>
+        </div>
+    </div>
+</body>
+</html>

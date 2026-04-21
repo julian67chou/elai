@@ -1,0 +1,71 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # 允許手動觸發
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies (如果有)
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        fi
+    
+    - name: Build site (如果有建置步驟)
+      run: |
+        # 如果有建置腳本，例如生成靜態檔案
+        if [ -f scripts/build.py ]; then
+          python3 scripts/build.py
+        fi
+        
+        # 更新最後更新日期
+        current_date=$(date '+%Y年%m月%d日 %H:%M')
+        sed -i "s/最後更新:.*/最後更新: ${current_date}/" index.html
+        
+        # 確保必要的目錄存在
+        mkdir -p _site/css _site/js _site/assets _site/blog
+        
+        # 複製檔案到 _site 目錄
+        cp -r index.html about.html css/ js/ assets/ _site/ 2>/dev/null || true
+        cp -r blog/ content/ _site/ 2>/dev/null || true
+        cp README.md clinic_info.json _site/ 2>/dev/null || true
+        
+        # 建立 .nojekyll 檔案
+        touch _site/.nojekyll
+        
+        # 建立 CNAME 檔案（如果存在）
+        if [ -f CNAME ]; then
+          cp CNAME _site/
+        fi
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
+        publish_branch: gh-pages  # 部署到 gh-pages 分支
+        cname: elai-clinic.tw  # 自訂網域（選用）
+    
+    - name: Create deployment summary
+      run: |
+        echo "## 部署完成" >> $GITHUB_STEP_SUMMARY
+        echo "- 時間: $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "- 分支: ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 提交: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "網站已部署到 GitHub Pages:" >> $GITHUB_STEP_SUMMARY
+        echo "- https://${{ github.repository_owner }}.github.io/$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**重要**：首次部署可能需要幾分鐘才會生效。" >> $GITHUB_STEP_SUMMARY

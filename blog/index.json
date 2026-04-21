@@ -1,0 +1,26 @@
+[
+  {
+    "title": "冬季保健注意事項",
+    "date": "2024-12-15",
+    "author": "王醫師",
+    "category": "預防醫學",
+    "tags": ["冬季", "保健", "預防"],
+    "slug": "2024-12-15-winter-health-care"
+  },
+  {
+    "title": "地中海飲食對心血管的益處",
+    "date": "2024-11-20",
+    "author": "陳醫師",
+    "category": "營養健康",
+    "tags": ["飲食", "心血管", "健康"],
+    "slug": "2024-11-20-mediterranean-diet"
+  },
+  {
+    "title": "規律運動如何預防慢性疾病",
+    "date": "2024-11-10",
+    "author": "林醫師",
+    "category": "疾病預防",
+    "tags": ["運動", "慢性病", "預防"],
+    "slug": "2024-11-10-exercise-prevention"
+  }
+]
