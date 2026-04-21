@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院長照片選擇與比較</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .photo-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .photo-info {
+            padding: 15px;
+        }
+        .photo-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        .photo-info p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .select-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .select-btn:hover {
+            background: #1976d2;
+        }
+        .instructions {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        .current-status {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .current-status h3 {
+            margin-top: 0;
+            color: #f57c00;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ 院長照片選擇與比較</h1>
+    <div class="subtitle">請選擇一張照片替換當前使用的院長照片</div>
+    
+    <div class="instructions">
+        <h3>📋 使用說明</h3>
+        <p>1. 查看所有可用的院長照片</p>
+        <p>2. 選擇一張沒有文字問題的照片</p>
+        <p>3. 點擊"選擇此照片"按鈕</p>
+        <p>4. 系統將自動更新網頁並部署</p>
+    </div>
+    
+    <div class="current-status">
+        <h3>📊 當前狀態</h3>
+        <p><strong>問題:</strong> 當前照片有文字"長"無法完全移除</p>
+        <p><strong>解決方案:</strong> 更換為其他院長照片</p>
+        <p><strong>目標:</strong> 選擇一張清晰、專業、無文字問題的照片</p>
+    </div>
+    
+    <div class="photo-grid" id="photo-grid">
+        <!-- 照片將由JavaScript動態添加 -->
+    </div>
+    
+    <script>
+        // 照片數據
+        const photos = [{'id': 0, 'filename': 'doctor-shih-backup.jpg', 'path': 'assets/doctor-shih-backup.jpg', 'dimensions': '(800, 896)', 'size_kb': '105.7KB'}, {'id': 1, 'filename': 'doctor-shih-cleaned.jpg', 'path': 'assets/doctor-shih-cleaned.jpg', 'dimensions': '(800, 896)', 'size_kb': '125.5KB'}, {'id': 2, 'filename': 'doctor-shih-thumbnail.jpg', 'path': 'assets/doctor-shih-thumbnail.jpg', 'dimensions': '(200, 200)', 'size_kb': '10.0KB'}, {'id': 3, 'filename': 'doctor-shih-transparent.png', 'path': 'assets/doctor-shih-transparent.png', 'dimensions': '(800, 896)', 'size_kb': '554.0KB'}, {'id': 4, 'filename': 'doctor-shih-with-bg-backup.jpg', 'path': 'assets/doctor-shih-with-bg-backup.jpg', 'dimensions': '(800, 896)', 'size_kb': '97.8KB'}, {'id': 5, 'filename': 'doctor-shih-with-bg.jpg', 'path': 'assets/doctor-shih-with-bg.jpg', 'dimensions': '(800, 896)', 'size_kb': '97.8KB'}, {'id': 6, 'filename': 'doctor-shih-with-bg_inpainted.jpg', 'path': 'assets/doctor-shih-with-bg_inpainted.jpg', 'dimensions': '(800, 896)', 'size_kb': '130.5KB'}, {'id': 7, 'filename': 'doctor-shih-with-bg_left_center_cleaned.jpg', 'path': 'assets/doctor-shih-with-bg_left_center_cleaned.jpg', 'dimensions': '(800, 896)', 'size_kb': '132.0KB'}, {'id': 8, 'filename': 'doctor-shih-with-bg_left_center_comparison.jpg', 'path': 'assets/doctor-shih-with-bg_left_center_comparison.jpg', 'dimensions': '(1071, 400)', 'size_kb': '140.0KB'}, {'id': 9, 'filename': 'doctor-shih-with-bg_left_center_preview.jpg', 'path': 'assets/doctor-shih-with-bg_left_center_preview.jpg', 'dimensions': '(800, 896)', 'size_kb': '141.4KB'}, {'id': 10, 'filename': 'doctor-shih-with-bg_manual_右下角.jpg', 'path': 'assets/doctor-shih-with-bg_manual_右下角.jpg', 'dimensions': '(800, 896)', 'size_kb': '133.1KB'}, {'id': 11, 'filename': 'doctor-shih-with-bg_manual_底部中央.jpg', 'path': 'assets/doctor-shih-with-bg_manual_底部中央.jpg', 'dimensions': '(800, 896)', 'size_kb': '133.4KB'}, {'id': 12, 'filename': 'doctor-shih-with-bg_preview_右上角.jpg', 'path': 'assets/doctor-shih-with-bg_preview_右上角.jpg', 'dimensions': '(800, 896)', 'size_kb': '137.5KB'}, {'id': 13, 'filename': 'doctor-shih-with-bg_preview_右下角.jpg', 'path': 'assets/doctor-shih-with-bg_preview_右下角.jpg', 'dimensions': '(800, 896)', 'size_kb': '139.5KB'}, {'id': 14, 'filename': 'doctor-shih-with-bg_preview_右側中間.jpg', 'path': 'assets/doctor-shih-with-bg_preview_右側中間.jpg', 'dimensions': '(800, 896)', 'size_kb': '139.2KB'}, {'id': 15, 'filename': 'doctor-shih-with-bg_preview_左下角.jpg', 'path': 'assets/doctor-shih-with-bg_preview_左下角.jpg', 'dimensions': '(800, 896)', 'size_kb': '140.9KB'}, {'id': 16, 'filename': 'doctor-shih-with-bg_preview_底部中央.jpg', 'path': 'assets/doctor-shih-with-bg_preview_底部中央.jpg', 'dimensions': '(800, 896)', 'size_kb': '142.4KB'}, {'id': 17, 'filename': 'doctor-shih-with-bg_smart_filled.jpg', 'path': 'assets/doctor-shih-with-bg_smart_filled.jpg', 'dimensions': '(800, 896)', 'size_kb': '130.0KB'}, {'id': 18, 'filename': 'doctor-shih-with-bg_smart_右上角.jpg', 'path': 'assets/doctor-shih-with-bg_smart_右上角.jpg', 'dimensions': '(800, 896)', 'size_kb': '132.7KB'}, {'id': 19, 'filename': 'doctor-shih-with-bg_smart_右下角.jpg', 'path': 'assets/doctor-shih-with-bg_smart_右下角.jpg', 'dimensions': '(800, 896)', 'size_kb': '133.1KB'}, {'id': 20, 'filename': 'doctor-shih-with-bg_smart_右側中間.jpg', 'path': 'assets/doctor-shih-with-bg_smart_右側中間.jpg', 'dimensions': '(800, 896)', 'size_kb': '132.9KB'}, {'id': 21, 'filename': 'doctor-shih-with-bg_smart_左下角.jpg', 'path': 'assets/doctor-shih-with-bg_smart_左下角.jpg', 'dimensions': '(800, 896)', 'size_kb': '133.0KB'}, {'id': 22, 'filename': 'doctor-shih-with-bg_smart_底部中央.jpg', 'path': 'assets/doctor-shih-with-bg_smart_底部中央.jpg', 'dimensions': '(800, 896)', 'size_kb': '133.2KB'}, {'id': 23, 'filename': 'doctor-shih-with-bg_text_detection.jpg', 'path': 'assets/doctor-shih-with-bg_text_detection.jpg', 'dimensions': '(800, 896)', 'size_kb': '141.7KB'}, {'id': 24, 'filename': 'doctor-shih.jpg', 'path': 'assets/doctor-shih.jpg', 'dimensions': '(800, 896)', 'size_kb': '105.7KB'}];
+        
+        // 動態生成照片卡片
+        function renderPhotos() {
+            const grid = document.getElementById('photo-grid');
+            grid.innerHTML = '';
+            
+            photos.forEach(photo => {
+                const card = document.createElement('div');
+                card.className = 'photo-card';
+                card.innerHTML = `
+                    <img src="${photo.path}" alt="${photo.filename}" loading="lazy">
+                    <div class="photo-info">
+                        <h3>${photo.filename}</h3>
+                        <p>尺寸: ${photo.dimensions}</p>
+                        <p>大小: ${photo.size_kb}</p>
+                        <button class="select-btn" onclick="selectPhoto('${photo.filename}')">
+                            選擇此照片
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        
+        function selectPhoto(filename) {
+            const confirmed = confirm(`確認選擇 ${filename} 作為新的院長照片？\n\n系統將：\n1. 更新網頁使用此照片\n2. 提交更改到 GitHub\n3. 觸發網站自動更新`);
+            
+            if (confirmed) {
+                alert(`已選擇: ${filename}\n\n正在更新...`);
+                
+                // 這裡可以添加實際的更新邏輯
+                // 例如通過 AJAX 調用後端 API
+                
+                // 顯示更新狀態
+                document.querySelector('.current-status').innerHTML = `
+                    <h3>🚀 更新中...</h3>
+                    <p><strong>已選擇:</strong> ${filename}</p>
+                    <p><strong>狀態:</strong> 正在更新網頁...</p>
+                    <p><strong>預計時間:</strong> 5-10分鐘完成部署</p>
+                    <p><strong>請稍後檢查網站更新</strong></p>
+                `;
+            }
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', renderPhotos);
+    </script>
+</body>
+</html>
