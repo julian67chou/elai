@@ -1,0 +1,82 @@
+name: Auto Sync to elai1 (Vercel)
+
+on:
+  push:
+    branches: [ main ]
+    # 排除工作流程文件本身的更改，避免循環觸發
+    paths-ignore:
+      - '.github/workflows/**'
+
+jobs:
+  sync-elai-to-elai1:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout elai repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Git
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    
+    - name: Create temporary clone for elai1
+      run: |
+        # 創建臨時目錄
+        TEMP_DIR=$(mktemp -d)
+        cd "$TEMP_DIR"
+        
+        # 克隆 elai1 倉庫
+        git clone --depth 1 "https://x-access-token:${{ secrets.ELAI1_SYNC_TOKEN }}@github.com/julian67chou/elai1.git" .
+        
+        # 刪除所有文件（保留 .git）
+        find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
+        
+        # 複製 elai 的內容
+        cp -r "$GITHUB_WORKSPACE"/* .
+        cp -r "$GITHUB_WORKSPACE"/.* . 2>/dev/null || true
+        
+        # 刪除 .git 避免衝突
+        rm -rf .git
+        
+        # 重新初始化
+        git init
+        git checkout -b main
+        git config user.name "GitHub Actions Bot"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        
+        # 提交訊息
+        COMMIT_MSG="Auto-sync from elai: ${{ github.event.head_commit.message }}"
+        git commit -m "$COMMIT_MSG"
+        
+        # 推送到 elai1
+        git remote add origin "https://x-access-token:${{ secrets.ELAI1_SYNC_TOKEN }}@github.com/julian67chou/elai1.git"
+        git push -f origin main
+        
+        # 清理
+        cd /
+        rm -rf "$TEMP_DIR"
+        
+    - name: Create sync report
+      run: |
+        echo "## 🔄 同步報告" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ **同步成功！**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**來源**: ${{ github.repository }}@${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**目標**: julian67chou/elai1" >> $GITHUB_STEP_SUMMARY
+        echo "**時間**: $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "**觸發者**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Vercel 將會自動檢測 elai1 的更新並重新部署。" >> $GITHUB_STEP_SUMMARY
+    
+    - name: Send notification (可選)
+      if: success()
+      run: |
+        echo "同步完成！檢查 Vercel 部署狀態。"
