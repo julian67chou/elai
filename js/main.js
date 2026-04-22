@@ -52,22 +52,18 @@ function setLastUpdated() {
 
 // 導覽列滾動效果
 function initNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > 100) {
-            navbar.classList.add('shadow-medium');
-            navbar.classList.remove('bg-light');
-            navbar.classList.add('bg-white');
-        } else {
-            navbar.classList.remove('shadow-medium');
-            navbar.classList.remove('bg-white');
-            navbar.classList.add('bg-light');
-        }
-    });
+    if (scrollTop > 100) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
 }
 
 // 平滑滾動
