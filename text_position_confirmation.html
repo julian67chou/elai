@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字位置確認工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .instructions {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .position-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .position-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .position-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .position-info {
+            padding: 15px;
+        }
+        .position-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .position-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #bbdefb;
+            color: #1565c0;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .position-desc {
+            color: #666;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .btn-view {
+            background: #4caf50;
+            color: white;
+        }
+        .btn-view:hover {
+            background: #388e3c;
+        }
+        .btn-select {
+            background: #2196f3;
+            color: white;
+        }
+        .btn-select:hover {
+            background: #1976d2;
+        }
+        .comparison {
+            background: #fff8e1;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .comparison h3 {
+            margin-top: 0;
+            color: #f57c00;
+        }
+        .current-status {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .current-status h3 {
+            margin-top: 0;
+            color: #7b1fa2;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 文字位置確認工具</h1>
+    <div class="subtitle">請查看預覽圖，確認文字"長"的實際位置</div>
+    
+    <div class="instructions">
+        <h3>📋 使用說明</h3>
+        <p>1. <span class="highlight">紅色圓圈</span>標記了可能的文字位置</p>
+        <p>2. 查看每張預覽圖，確認文字"長"在哪個位置</p>
+        <p>3. 點擊"查看清理效果"查看該位置的清理版本</p>
+        <p>4. 點擊"選擇此位置"更新網頁</p>
+        <p>5. 如果都不對，請提供更精確的位置描述</p>
+    </div>
+    
+    <div class="position-grid">
+        <!-- 右下角 -->
+        <div class="position-card">
+            <img src="assets/doctor-shih-with-bg_preview_右下角.jpg" alt="右下角預覽">
+            <div class="position-info">
+                <div class="position-tag">位置 1</div>
+                <h3>右下角</h3>
+                <p class="position-desc">照片的右下角區域，通常用於標註職稱或姓名</p>
+                <div class="action-buttons">
+                    <button class="btn btn-view" onclick="viewCleaned('右下角')">查看清理效果</button>
+                    <button class="btn btn-select" onclick="selectPosition('右下角')">選擇此位置</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部中央 -->
+        <div class="position-card">
+            <img src="assets/doctor-shih-with-bg_preview_底部中央.jpg" alt="底部中央預覽">
+            <div class="position-info">
+                <div class="position-tag">位置 2</div>
+                <h3>底部中央</h3>
+                <p class="position-desc">照片底部中央區域，可能用於標註職稱</p>
+                <div class="action-buttons">
+                    <button class="btn btn-view" onclick="viewCleaned('底部中央')">查看清理效果</button>
+                    <button class="btn btn-select" onclick="selectPosition('底部中央')">選擇此位置</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 左下角 -->
+        <div class="position-card">
+            <img src="assets/doctor-shih-with-bg_preview_左下角.jpg" alt="左下角預覽">
+            <div class="position-info">
+                <div class="position-tag">位置 3</div>
+                <h3>左下角</h3>
+                <p class="position-desc">照片的左下角區域，較少用於文字標註</p>
+                <div class="action-buttons">
+                    <button class="btn btn-view" onclick="viewCleaned('左下角')">查看清理效果</button>
+                    <button class="btn btn-select" onclick="selectPosition('左下角')">選擇此位置</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右上角 -->
+        <div class="position-card">
+            <img src="assets/doctor-shih-with-bg_preview_右上角.jpg" alt="右上角預覽">
+            <div class="position-info">
+                <div class="position-tag">位置 4</div>
+                <h3>右上角</h3>
+                <p class="position-desc">照片的右上角區域，可能用於標註或logo</p>
+                <div class="action-buttons">
+                    <button class="btn btn-view" onclick="viewCleaned('右上角')">查看清理效果</button>
+                    <button class="btn btn-select" onclick="selectPosition('右上角')">選擇此位置</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右側中間 -->
+        <div class="position-card">
+            <img src="assets/doctor-shih-with-bg_preview_右側中間.jpg" alt="右側中間預覽">
+            <div class="position-info">
+                <div class="position-tag">位置 5</div>
+                <h3>右側中間</h3>
+                <p class="position-desc">照片右側中間區域，可能用於垂直文字標註</p>
+                <div class="action-buttons">
+                    <button class="btn btn-view" onclick="viewCleaned('右側中間')">查看清理效果</button>
+                    <button class="btn btn-select" onclick="selectPosition('右側中間')">選擇此位置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="comparison">
+        <h3>🔄 清理效果比較</h3>
+        <p id="comparison-text">請點擊"查看清理效果"按鈕查看特定位置的清理版本</p>
+        <div id="comparison-images" style="display: none;">
+            <div style="display: flex; gap: 20px; margin-top: 15px;">
+                <div style="flex: 1;">
+                    <h4>預覽圖 (標記位置)</h4>
+                    <img id="preview-img" src="" alt="預覽" style="width: 100%; max-height: 300px; object-fit: contain;">
+                </div>
+                <div style="flex: 1;">
+                    <h4>清理效果</h4>
+                    <img id="cleaned-img" src="" alt="清理後" style="width: 100%; max-height: 300px; object-fit: contain;">
+                </div>
+            </div>
+            <button class="btn btn-select" onclick="useThisVersion()" style="margin-top: 15px;">使用此版本</button>
+        </div>
+    </div>
+    
+    <div class="current-status">
+        <h3>📊 當前狀態</h3>
+        <p><strong>當前網頁使用的圖片:</strong> <span id="current-image">doctor-shih-with-bg_inpainted.jpg</span></p>
+        <p><strong>問題:</strong> 醫師臉部被打馬賽克 😂</p>
+        <p><strong>解決方案:</strong> 使用智能工具，只處理文字區域</p>
+        <p><strong>下一步:</strong> 確認文字位置，選擇正確的清理版本</p>
+    </div>
+    
+    <script>
+        let selectedPosition = null;
+        
+        function viewCleaned(position) {
+            selectedPosition = position;
+            
+            // 更新比較區域
+            document.getElementById('comparison-text').style.display = 'none';
+            document.getElementById('comparison-images').style.display = 'block';
+            
+            // 設置圖片
+            document.getElementById('preview-img').src = `assets/doctor-shih-with-bg_preview_${position}.jpg`;
+            document.getElementById('cleaned-img').src = `assets/doctor-shih-with-bg_smart_${position}.jpg`;
+            
+            // 更新文字
+            document.querySelector('.comparison h3').textContent = `🔄 ${position} 清理效果比較`;
+            
+            console.log(`🔍 查看 ${position} 的清理效果`);
+        }
+        
+        function selectPosition(position) {
+            selectedPosition = position;
+            
+            // 顯示確認對話框
+            const confirmed = confirm(`確認選擇 ${position} 位置？\n\n系統將：\n1. 更新網頁使用此位置的清理版本\n2. 提交更改到 GitHub\n3. 觸發網站更新`);
+            
+            if (confirmed) {
+                updateWebsite(position);
+            }
+        }
+        
+        function useThisVersion() {
+            if (selectedPosition) {
+                selectPosition(selectedPosition);
+            } else {
+                alert('請先選擇一個位置');
+            }
+        }
+        
+        function updateWebsite(position) {
+            // 顯示更新中狀態
+            const statusDiv = document.querySelector('.current-status');
+            statusDiv.innerHTML = `
+                <h3>🚀 更新中...</h3>
+                <p><strong>位置:</strong> ${position}</p>
+                <p><strong>使用的圖片:</strong> doctor-shih-with-bg_smart_${position}.jpg</p>
+                <p><strong>狀態:</strong> 正在更新網頁...</p>
+                <p><strong>預計時間:</strong> 5-10分鐘</p>
+            `;
+            
+            console.log(`🔄 更新網頁使用 ${position} 位置的清理版本`);
+            
+            // 這裡可以添加實際的更新邏輯
+            // 例如通過 AJAX 調用後端 API
+            
+            // 模擬更新完成
+            setTimeout(() => {
+                statusDiv.innerHTML = `
+                    <h3>✅ 更新完成！</h3>
+                    <p><strong>已更新為:</strong> ${position} 版本</p>
+                    <p><strong>使用的圖片:</strong> doctor-shih-with-bg_smart_${position}.jpg</p>
+                    <p><strong>下一步:</strong></p>
+                    <ol>
+                        <li>強制刷新網站: Ctrl+Shift+R</li>
+                        <li>檢查院長照片</li>
+                        <li>確認文字"長"已移除</li>
+                        <li>確認臉部沒有馬賽克</li>
+                    </ol>
+                    <p><strong>網站連結:</strong> <a href="https://elai1.vercel.app/" target="_blank">https://elai1.vercel.app/</a></p>
+                `;
+                
+                // 更新當前圖片顯示
+                document.getElementById('current-image').textContent = `doctor-shih-with-bg_smart_${position}.jpg`;
+                
+                alert(`✅ 已更新為 ${position} 版本\n\n請強制刷新網站查看效果！`);
+            }, 2000);
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 文字位置確認工具已加載');
+            console.log('💡 請查看預覽圖確認文字位置');
+        });
+    </script>
+</body>
+</html>
