@@ -325,61 +325,153 @@ body {
 
 /* 關於我們區域 */
 .about-image {
-  border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all 0.5s var(--ease-in-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-image:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.about-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(13, 124, 138, 0.1), 
+    rgba(255, 122, 107, 0.05));
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-in-out);
+}
+
+.about-image:hover::after {
+  opacity: 1;
 }
 
 /* 醫師介紹 */
 .doctor-card {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid var(--medium-gray);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  background: var(--neutral-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--ease-in-out);
+  overflow: hidden;
+  position: relative;
+}
+
+.doctor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-teal-light);
+}
+
+.doctor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-teal), var(--accent-coral));
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-in-out);
+}
+
+.doctor-card:hover::before {
+  opacity: 1;
 }
 
 .doctor-img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+  transition: all 0.5s var(--ease-in-out);
+}
+
+.doctor-card:hover .doctor-img {
+  transform: scale(1.05);
 }
 
 /* 醫療標籤 */
 .medical-tag {
   display: inline-block;
-  background-color: var(--light-beige);
-  color: var(--primary-dark-green);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
+  background-color: var(--neutral-beige);
+  color: var(--primary-teal);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0.25rem;
-  border: 1px solid rgba(62, 92, 56, 0.2);
+  border: 1px solid rgba(13, 124, 138, 0.2);
+  transition: all 0.3s var(--ease-in-out);
+}
+
+.medical-tag:hover {
+  background-color: var(--primary-teal);
+  color: var(--neutral-white);
+  border-color: var(--primary-teal);
+  transform: translateY(-2px);
 }
 
 /* 聯絡表單 */
 .contact-form {
-  background: white;
-  border-radius: 12px;
-  padding: 2.5rem;
-  border: 1px solid var(--medium-gray);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  background: var(--neutral-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xxl);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s var(--ease-in-out);
+}
+
+.contact-form:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-teal-light);
 }
 
 /* 頁尾 */
 .footer {
-  background-color: var(--primary-dark-green);
-  color: white;
-  padding: 3rem 0 2rem;
+  background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal));
+  color: var(--neutral-white);
+  padding: var(--space-xxl) 0 var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 20%, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 70%);
+  z-index: 0;
+}
+
+.footer * {
+  position: relative;
+  z-index: 1;
 }
 
 .footer a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
+  transition: all 0.3s var(--ease-in-out);
 }
 
 .footer a:hover {
-  color: white;
+  color: var(--neutral-white);
+  transform: translateY(-2px);
 }
 
 /* 響應式調整 */
@@ -401,137 +493,131 @@ body {
 
 /* 特色圖示樣式 */
 .feature-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--primary-dark-green), var(--primary-orange));
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary-teal), var(--accent-coral));
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.3s var(--ease-in-out);
+}
+
+.feature-icon:hover {
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: var(--shadow-accent);
 }
 
 .feature-icon i {
-  font-size: 1.5rem;
-  color: white;
+  font-size: 1.6rem;
+  color: var(--neutral-white);
 }
 
 /* 圖片樣式調整 */
 .rounded-lg {
-  border-radius: 12px !important;
+  border-radius: var(--radius-lg) !important;
 }
 
 .shadow-medium {
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
 .about-image {
-  border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
 }
 
 /* 醫師介紹區域 */
 .doctor-detail {
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  border: 1px solid var(--medium-gray);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  padding: var(--space-xl);
+  background: var(--neutral-white);
+  border-radius: var(--radius-xl);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s var(--ease-in-out);
+}
+
+.doctor-detail:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-teal-light);
 }
 
 /* 聯絡資訊卡片 */
 .info-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--medium-gray);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-  margin-bottom: 1.5rem;
+  background: var(--neutral-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+  transition: all 0.3s var(--ease-in-out);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-teal-light);
 }
 
 .info-card i {
-  color: var(--primary-orange);
+  color: var(--accent-coral);
 }
 
 /* LOGO 樣式 */
 .navbar-logo {
-  height: 40px;
+  height: 44px;
   width: auto;
-  transition: all 0.3s ease;
+  transition: all 0.4s var(--ease-in-out);
 }
 
 .navbar-logo:hover {
   opacity: 0.9;
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(2deg);
 }
 
 .brand-text {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--primary-dark-green);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--primary-teal);
   letter-spacing: 0.5px;
+  font-family: var(--font-family-secondary);
+  transition: all 0.3s var(--ease-in-out);
+}
+
+.navbar-brand:hover .brand-text {
+  color: var(--primary-teal-light);
 }
 
 /* 響應式 LOGO 調整 */
 @media (max-width: 768px) {
   .navbar-logo {
-    height: 32px;
+    height: 36px;
   }
   
   .brand-text {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 }
 
 /* 額外的企業色應用 */
 .text-logo-primary {
-  color: #10495C !important;
+  color: var(--primary-teal) !important;
 }
 
 .text-logo-accent {
-  color: #F19C32 !important;
+  color: var(--accent-coral) !important;
 }
 
 .bg-logo-primary {
-  background-color: #10495C !important;
+  background-color: var(--primary-teal) !important;
 }
 
 .bg-logo-accent {
-  background-color: #F19C32 !important;
+  background-color: var(--accent-coral) !important;
 }
 
-/* 按鈕顏色微調 */
-.btn-primary {
-  background-color: #10495C;
-  border-color: #10495C;
-}
 
-.btn-primary:hover {
-  background-color: #0a3a4a;
-  border-color: #0a3a4a;
-}
-
-.btn-outline-primary {
-  color: #10495C;
-  border-color: #10495C;
-}
-
-.btn-outline-primary:hover {
-  background-color: #10495C;
-  border-color: #10495C;
-  color: white;
-}
-
-/* 服務卡片懸停效果強化 */
-.service-card:hover {
-  border-color: #F19C32;
-  box-shadow: 0 15px 30px rgba(241, 156, 50, 0.15);
-}
-
-/* 區段分隔線顏色更新 */
-.section-divider {
-  background: linear-gradient(to right, #10495C, #F19C32);
-}
 
 /* 字體渲染優化 */
 * {
