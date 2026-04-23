@@ -1,0 +1,96 @@
+# Vercel 部署觸發文件 - SOP 提醒工具部署
+
+## 觸發資訊
+- **觸發時間**: $(date)
+- **提交訊息**: 添加 SOP 提醒工具和技能
+- **提交版本**: 5a27a60
+- **觸發檔案**: trigger_update_sop_reminder.txt
+- **執行者**: Hermes Agent
+
+## 部署摘要
+添加完整的 SOP 提醒系統，確保未來修改都遵循標準作業程序：
+
+### 1. SOP 提醒工具
+- **`follow_sop.sh`** - 完整的 SOP 提醒腳本
+  - 顯示 SOP 所有步驟
+  - 提供實用工具列表
+  - 提醒 Hermes Agent 遵循流程
+  - 支持步驟查詢（1-6）
+
+- **`REMINDER_SOP.txt`** - 快速提醒文件
+  - 給用戶的具體操作指南
+  - 給 Hermes Agent 的完整提醒
+  - 重要工具列表和記憶觸發關鍵字
+
+### 2. 技能系統
+- **`elai-clinic-website-sop-reminder`** 技能
+  - 自動加載當用戶提到相關關鍵詞
+  - 包含完整的 SOP 流程
+  - 預防措施和緊急應變指南
+
+### 3. 記憶更新
+- 添加 SOP 提醒到持久記憶
+- 關鍵詞觸發：elai-clinic、伊萊診所、網站更新
+
+## 部署狀態
+- ✅ Git 提交完成
+- ✅ GitHub 推送完成
+- ⏳ Vercel 部署等待中
+- ⏳ CDN 緩存更新等待中
+
+## 預計時間線
+- 0-2分鐘: GitHub Actions 同步
+- 2-7分鐘: Vercel 檢測更新並開始部署
+- 7-30分鐘: CDN 緩存更新完成
+
+## 重要連結
+- 網站: https://elai1.vercel.app/
+- GitHub: https://github.com/julian67chou/elai
+- Vercel: https://vercel.com/julian67chou
+
+## 使用指南
+
+### 用戶如何提醒 Hermes Agent：
+1. **運行提醒腳本**：
+   ```bash
+   cd /workspace/elai-clinic
+   ./follow_sop.sh
+   ```
+
+2. **在對話中明確說出**：
+   "請遵循伊萊診所網站更新 SOP"
+
+3. **檢查關鍵步驟**：
+   - 更新前：運行資源檢查
+   - 修改後：進行本地測試
+   - 部署前：執行檢查清單
+   - 部署後：驗證結果
+
+### Hermes Agent 自動提醒：
+當用戶提到以下關鍵詞時，技能會自動加載：
+- "elai-clinic"
+- "伊萊診所"
+- "網站更新"
+- "圖片修改"
+- "部署網站"
+- "follow sop"
+
+## 預防措施強化
+基於歷史問題，已建立三層防護：
+1. **技能層**：自動加載 SOP 提醒
+2. **工具層**：強制檢查和測試腳本
+3. **記憶層**：持久記憶提醒
+
+## 檔案位置
+- `/workspace/elai-clinic/follow_sop.sh`
+- `/workspace/elai-clinic/REMINDER_SOP.txt`
+- `~/.hermes/skills/web-development/elai-clinic-website-sop-reminder/`
+
+## 驗證方法
+部署完成後，運行：
+```bash
+cd /workspace/elai-clinic
+./follow_sop.sh
+./check_website_resources.sh
+./pre_deployment_checklist.sh
+```
