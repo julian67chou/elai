@@ -1,0 +1,83 @@
+# 伊萊診所網站更新 SOP 提醒
+# ===============================
+
+## 給用戶的提醒：
+當您要修改伊萊診所網站時，請：
+
+1. **運行 SOP 提醒腳本**：
+   ```
+   cd /workspace/elai-clinic
+   ./follow_sop.sh
+   ```
+
+2. **提醒 Hermes Agent**：
+   在對話中明確說出：「請遵循伊萊診所網站更新 SOP」
+
+3. **檢查關鍵步驟**：
+   - 更新前：運行資源檢查
+   - 修改後：進行本地測試  
+   - 部署前：執行檢查清單
+   - 部署後：驗證結果
+
+## 給 Hermes Agent 的提醒：
+當處理伊萊診所網站更新時，請務必：
+
+### 1. 更新前準備
+- 檢查 Git 狀態
+- 確認備份狀態
+- 閱讀相關文件
+
+### 2. 標準修改流程
+- 小修改：直接編輯
+- 中修改：創建測試頁面
+- 大修改：創建分支
+- 圖片修改：特別小心路徑
+
+### 3. 圖片資源管理
+- 圖片必須在 assets/ 目錄
+- 修改前先備份原圖
+- 更新後驗證路徑
+
+### 4. 測試與驗證
+- 運行資源完整性檢查：`./check_website_resources.sh`
+- 進行本地功能測試：`./test_website_locally.sh`
+- 檢查關鍵內容是否存在
+
+### 5. 標準部署流程
+- 運行部署前檢查：`./pre_deployment_checklist.sh`
+- 使用標準部署腳本：`./deploy_elai_clinic.sh "修改描述"`
+- 驗證部署結果：`./verify_update.sh`
+
+### 6. 緊急應變
+- 問題發生時：立即停止
+- 分析原因：查看日誌
+- 執行回滾：`./rollback_website.sh [commit-hash]`
+- 記錄學習：更新 SOP
+
+## 重要工具列表：
+- `follow_sop.sh` - SOP 提醒腳本
+- `check_website_resources.sh` - 資源檢查
+- `test_website_locally.sh` - 本地測試
+- `pre_deployment_checklist.sh` - 部署前檢查
+- `deploy_elai_clinic.sh` - 標準部署
+- `rollback_website.sh` - 快速回滾
+- `verify_update.sh` - 部署驗證
+
+## 記憶觸發關鍵字：
+- "elai-clinic"
+- "伊萊診所"
+- "網站更新"
+- "圖片修改"
+- "部署網站"
+- "follow sop"
+
+## 緊急聯絡：
+如果 SOP 無法解決問題，請：
+1. 立即停止操作
+2. 運行 `./rollback_website.sh` 回滾
+3. 檢查 `WEBSITE_UPDATE_SOP.md` 第8章
+4. 聯繫系統管理員
+
+---
+*最後更新: $(date)*
+*SOP 版本: v1.0 (2026-04-23)*
