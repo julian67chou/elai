@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院長照片預覽</title>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .photo-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .photo-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .info h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>院長照片預覽</h1>
+        <p>這是已更新到網站的院長照片，尺寸已優化適合網頁顯示。</p>
+        
+        <div class="photo-container">
+            <img src="assets/doctor-photo.jpg" alt="施奕仲院長 - 預覽">
+        </div>
+        
+        <div class="info">
+            <h3>圖片資訊</h3>
+            <p><strong>檔案名稱：</strong> doctor-photo.jpg</p>
+            <p><strong>檔案大小：</strong> 71.1 KB (已優化，原圖 639KB)</p>
+            <p><strong>圖片尺寸：</strong> 800 × 764 像素</p>
+            <p><strong>使用位置：</strong> 院長介紹區塊 (index.html 第333行)</p>
+            <p><strong>更新狀態：</strong> 已提交到 GitHub，Vercel 自動部署中</p>
+        </div>
+        
+        <a href="index.html" class="back-link">返回首頁</a>
+        <a href="https://elai1.vercel.app/" target="_blank" class="back-link" style="background: #27ae60; margin-left: 10px;">查看線上網站</a>
+    </div>
+</body>
+</html>
