@@ -185,6 +185,65 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* 院長照片容器和圖片樣式 */
+.doctor-image-container {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.doctor-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  object-fit: cover;
+  display: block;
+}
+
+/* 醫師介紹文字區域 */
+.doctor-info {
+  padding-left: 0;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .doctor-image-container {
+    max-width: 220px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .doctor-image {
+    max-height: 250px;
+  }
+  
+  .doctor-info {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .doctor-image-container {
+    max-width: 240px;
+  }
+  
+  .doctor-image {
+    max-height: 300px;
+  }
+}
+
+@media (min-width: 993px) {
+  .doctor-image-container {
+    max-width: 260px;
+  }
+  
+  .doctor-image {
+    max-height: 320px;
+  }
+}
+
 /* 醫療標籤 */
 .medical-tag {
   display: inline-block;
