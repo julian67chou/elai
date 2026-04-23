@@ -1,0 +1,41 @@
+# Vercel 部署觸發文件 - 歷史報告和備份檔案
+
+## 觸發資訊
+- **觸發時間**: $(date)
+- **提交訊息**: 添加歷史報告和備份檔案
+- **提交版本**: e5284b2
+- **觸發檔案**: trigger_update_history_reports.txt
+- **執行者**: Hermes Agent
+
+## 修改摘要
+添加歷史報告和備份檔案，記錄網站修復歷史：
+- 部署報告 (DEPLOYMENT_REPORT_20260423.md)
+- Hero 圖片恢復報告 (HERO_IMAGE_RESTORE_REPORT.md)
+- 服務順序更新報告 (SERVICE_ORDER_UPDATE_REPORT.md)
+- 醫生照片預覽頁面 (doctor-photo-preview.html)
+- index.html 備份檔案 (index.html.backup)
+- 驗證更新腳本 (verify_update.sh)
+- 重命名舊部署腳本 (deploy_legacy.sh)
+
+## 部署狀態
+- ✅ Git 提交完成
+- ✅ GitHub 推送完成
+- ⏳ Vercel 部署等待中
+- ⏳ CDN 緩存更新等待中
+
+## 預計時間線
+- 0-2分鐘: GitHub Actions 同步
+- 2-7分鐘: Vercel 檢測更新並開始部署
+- 7-30分鐘: CDN 緩存更新完成
+
+## 重要連結
+- 網站: https://elai1.vercel.app/
+- GitHub: https://github.com/julian67chou/elai
+- Vercel: https://vercel.com/julian67chou
+
+## 檔案用途
+這些檔案記錄了網站修復歷史和重要變更，有助於：
+1. 未來問題排查
+2. 版本對比
+3. 學習和改進流程
+4. 緊急恢復參考
