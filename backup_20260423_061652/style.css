@@ -1,0 +1,527 @@
+/* 伊萊診所 - 簡化專業版樣式 */
+:root {
+  --primary-dark-green: #10495C;
+  --primary-orange: #F19C32;
+  --light-beige: #F8F4E9;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  
+  /* 字體系統 */
+  --font-family-primary: 'Microsoft YaHei', '微軟雅黑', 'PingFang SC', '蘋方-簡', 'Heiti SC', '黑體-繁', 'Noto Sans TC', '思源黑體', sans-serif;
+  --font-family-secondary: 'Montserrat', 'Roboto', 'Open Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-family-serif: 'Noto Serif TC', '思源宋體', 'SimSun', '宋體', 'PMingLiU', '新細明體', serif;
+}
+
+/* 基礎樣式 */
+body {
+  font-family: var(--font-family-primary);
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 導覽列 */
+.navbar {
+  background-color: white !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+  color: var(--primary-dark-green) !important;
+  font-weight: 700;
+}
+
+/* Hero區域 */
+.hero-section {
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, rgba(248, 244, 233, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--primary-dark-green);
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 1.5rem;
+}
+
+/* 統計數字 - 簡化版 */
+.stats-container {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark-green);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* 服務卡片 - 統一簡潔樣式 */
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 100%;
+  border: 1px solid var(--medium-gray);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  border-color: var(--primary-orange);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-dark-green), var(--primary-orange));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon i {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.service-card h4 {
+  color: var(--primary-dark-green);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.service-card ul {
+  margin-top: 1.5rem;
+}
+
+.service-card li {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.service-card li i {
+  color: var(--primary-orange);
+}
+
+/* 區段分隔線 */
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-dark-green), var(--primary-orange));
+  margin: 20px auto 30px;
+  border-radius: 2px;
+}
+
+/* 按鈕樣式 */
+.btn-primary {
+  background-color: var(--primary-dark-green);
+  border-color: var(--primary-dark-green);
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #0a3a4a;
+  border-color: #0a3a4a;
+}
+
+.btn-outline-primary {
+  color: var(--primary-dark-green);
+  border-color: var(--primary-dark-green);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-dark-green);
+  border-color: var(--primary-dark-green);
+}
+
+/* 關於我們區域 */
+.about-image {
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* 醫師介紹 */
+.doctor-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid var(--medium-gray);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.doctor-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+/* 院長照片容器和圖片樣式 */
+.doctor-image-container {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.doctor-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  object-fit: cover;
+  display: block;
+}
+
+/* 醫師介紹文字區域 */
+.doctor-info {
+  padding-left: 0;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .doctor-image-container {
+    max-width: 220px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .doctor-image {
+    max-height: 250px;
+  }
+  
+  .doctor-info {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .doctor-image-container {
+    max-width: 240px;
+  }
+  
+  .doctor-image {
+    max-height: 300px;
+  }
+}
+
+@media (min-width: 993px) {
+  .doctor-image-container {
+    max-width: 260px;
+  }
+  
+  .doctor-image {
+    max-height: 320px;
+  }
+}
+
+/* 醫療標籤 */
+.medical-tag {
+  display: inline-block;
+  background-color: var(--light-beige);
+  color: var(--primary-dark-green);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0.25rem;
+  border: 1px solid rgba(62, 92, 56, 0.2);
+}
+
+/* 聯絡表單 */
+.contact-form {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 1px solid var(--medium-gray);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+/* 頁尾 */
+.footer {
+  background-color: var(--primary-dark-green);
+  color: white;
+  padding: 3rem 0 2rem;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 300px;
+  }
+
+  .stat-item {
+    flex: none;
+  }
+}
+
+/* 特色圖示樣式 */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-dark-green), var(--primary-orange));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* 圖片樣式調整 */
+.rounded-lg {
+  border-radius: 12px !important;
+}
+
+.shadow-medium {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+}
+
+.about-image {
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* 醫師介紹區域 */
+.doctor-detail {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--medium-gray);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+/* 聯絡資訊卡片 */
+.info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--medium-gray);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  margin-bottom: 1.5rem;
+}
+
+.info-card i {
+  color: var(--primary-orange);
+}
+
+/* LOGO 樣式 */
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary-dark-green);
+  letter-spacing: 0.5px;
+}
+
+/* 響應式 LOGO 調整 */
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 32px;
+  }
+  
+  .brand-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* 額外的企業色應用 */
+.text-logo-primary {
+  color: #10495C !important;
+}
+
+.text-logo-accent {
+  color: #F19C32 !important;
+}
+
+.bg-logo-primary {
+  background-color: #10495C !important;
+}
+
+.bg-logo-accent {
+  background-color: #F19C32 !important;
+}
+
+/* 按鈕顏色微調 */
+.btn-primary {
+  background-color: #10495C;
+  border-color: #10495C;
+}
+
+.btn-primary:hover {
+  background-color: #0a3a4a;
+  border-color: #0a3a4a;
+}
+
+.btn-outline-primary {
+  color: #10495C;
+  border-color: #10495C;
+}
+
+.btn-outline-primary:hover {
+  background-color: #10495C;
+  border-color: #10495C;
+  color: white;
+}
+
+/* 服務卡片懸停效果強化 */
+.service-card:hover {
+  border-color: #F19C32;
+  box-shadow: 0 15px 30px rgba(241, 156, 50, 0.15);
+}
+
+/* 區段分隔線顏色更新 */
+.section-divider {
+  background: linear-gradient(to right, #10495C, #F19C32);
+}
+
+/* 字體渲染優化 */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 標題字體優化 */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+/* 英文與數字字體優化 */
+code, pre, kbd, samp,
+.numbers, .prices, .statistics {
+  font-family: var(--font-family-secondary);
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* 導航列字體優化 */
+.navbar-brand {
+  font-family: var(--font-family-primary);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.brand-text {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Hero區域字體優化 */
+.hero-title {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* 按鈕字體優化 */
+.btn {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* 響應式字體調整 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+/* 字體載入備用方案 */
+.font-loading {
+  font-family: Arial, sans-serif;
+}
+
+.font-loaded {
+  font-family: var(--font-family-primary);
+}
