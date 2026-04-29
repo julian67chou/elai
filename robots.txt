@@ -6,7 +6,7 @@ Disallow: /content/
 Disallow: /blog/
 Disallow: /admin/
 
-Sitemap: https://yilife-clinic.tw/sitemap.xml
+Sitemap: https://www.yilife-clinic.com.tw/sitemap.xml
 
 # 爬蟲設定
 Crawl-delay: 2
