@@ -5,82 +5,60 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
     <!-- 伊萊診所網站地圖 -->
-    <!-- 生成時間: 2024-12-15 -->
+    <!-- 生成時間: 2026-04-29 -->
     
     <url>
-        <loc>https://elai-clinic.tw/</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://elai-clinic.tw/index.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/index.html</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <!-- 服務頁面 -->
     <url>
-        <loc>https://elai-clinic.tw/#services</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/#services</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- 關於我們 -->
     <url>
-        <loc>https://elai-clinic.tw/#about</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/#about</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- 醫師介紹 -->
     <url>
-        <loc>https://elai-clinic.tw/#doctors</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/#doctors</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- 健康資訊 -->
     <url>
-        <loc>https://elai-clinic.tw/#health-info</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/#health-info</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
     
     <!-- 聯絡我們 -->
     <url>
-        <loc>https://elai-clinic.tw/#contact</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://yilife-clinic.tw/#contact</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
-    </url>
-    
-    <!-- 部落格文章 -->
-    <url>
-        <loc>https://elai-clinic.tw/blog/2024-12-15-winter-health-care.html</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <url>
-        <loc>https://elai-clinic.tw/blog/2024-11-20-mediterranean-diet.html</loc>
-        <lastmod>2024-11-20</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <url>
-        <loc>https://elai-clinic.tw/blog/2024-11-10-exercise-prevention.html</loc>
-        <lastmod>2024-11-10</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.6</priority>
     </url>
     
 </urlset>
