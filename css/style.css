@@ -689,3 +689,99 @@ section:not(.hero-section) h2,
   .service-image { height: 120px; }
   .hero-section { padding: 100px 0 60px; }
 }
+
+/* ══════════════════════════════════════════
+   門診時間表
+   ══════════════════════════════════════════ */
+.hours-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table th {
+  background: var(--teal);
+  color: white;
+  padding: 1rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.hours-table th:first-child { text-align: left; padding-left: 2rem; }
+
+.hours-table td {
+  padding: 0.9rem 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #eef0f2;
+  font-size: 0.92rem;
+  color: #555;
+}
+
+.hours-table tr:last-child td { border-bottom: none; }
+
+.hours-table .day-label {
+  font-weight: 600;
+  color: var(--teal);
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.hours-table .time-slot {
+  color: #555;
+  font-weight: 500;
+}
+
+.hours-table .closed {
+  color: #ccc;
+}
+
+.hours-table .doctor-slot {
+  color: var(--amber);
+  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.hours-table .doctor-day {
+  background: #fef8ed;
+}
+
+.hours-table .doctor-day td {
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.hours-table .doctor-day .doctor-slot {
+  color: #d4892a;
+  font-weight: 700;
+}
+
+.hours-note {
+  padding: 1rem 2rem;
+  background: #f8f9fa;
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.8;
+  border-top: 1px solid #eef0f2;
+}
+
+.hours-note strong {
+  color: var(--teal);
+}
+
+/* Mobile 門診表 */
+@media (max-width: 768px) {
+  .hours-table th { font-size: 0.85rem; padding: 0.75rem 0.4rem; }
+  .hours-table th:first-child { padding-left: 0.75rem; }
+  .hours-table td { font-size: 0.82rem; padding: 0.75rem 0.4rem; }
+  .hours-table .day-label { padding-left: 0.75rem; }
+  .hours-table .doctor-slot { font-size: 0.8rem; }
+  .hours-note { padding: 0.75rem 1rem; font-size: 0.82rem; }
+}
