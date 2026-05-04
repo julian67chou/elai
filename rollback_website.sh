@@ -22,7 +22,10 @@ git log --oneline -10
 
 # 獲取目標提交
 TARGET_COMMIT="$1"
-if [ -z "$TARGET_COMMIT" ]; then
+if [ "$TARGET_COMMIT" == "--last" ]; then
+    TARGET_COMMIT="HEAD~1"
+    echo "⏪ 回滾到上一版 (HEAD~1)"
+elif [ -z "$TARGET_COMMIT" ]; then
     echo ""
     read -p "請輸入要回滾到的 commit hash (或輸入 'HEAD~1' 回滾上個版本): " TARGET_COMMIT
 fi

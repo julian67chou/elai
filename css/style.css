@@ -526,3 +526,166 @@ code, pre, kbd, samp,
 .font-loaded {
   font-family: var(--font-family-primary);
 }
+
+/* ══════════════════════════════════════════
+   伊萊診所 — 設計強化層 (2026-05-04)
+   在既有 Bootstrap 上疊加，不影響既有結構
+   ══════════════════════════════════════════ */
+
+/* ── 1. 字體系統強化 ── */
+:root {
+  --teal: #10495C;
+  --amber: #F19C32;
+  --amber-light: #fef3e0;
+  --font-serif: 'Noto Serif TC', serif;
+  --font-sans: 'Noto Sans TC', 'Microsoft YaHei', sans-serif;
+}
+
+/* 區塊標題改用宋體，更有質感 */
+.section h2,
+section:not(.hero-section) h2,
+.py-5:not(.bg-dark) h2 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 800;
+}
+
+/* ── 2. Hero 區域 — amber 光暈 ── */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -150px;
+  left: -150px;
+  background: radial-gradient(circle, rgba(241, 156, 50, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 3. Header 捲動效果 ── */
+.navbar {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar.shadow-medium {
+  border-bottom: 2px solid var(--amber) !important;
+}
+
+/* ── 4. 服務卡片底色區分 ── */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0;  /* remove padding to let image span full width */
+}
+
+/* Service image — spans full width at card top */
+.service-image {
+  width: 100%; height: 160px; overflow: hidden;
+}
+.service-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.service-card:hover .service-image img { transform: scale(1.06); }
+
+/* Re-pad card body (everything after image) */
+.service-icon { margin: 1.5rem 0 0 2rem; }  /* icon sits below image with left padding */
+.service-card h4,
+.service-card p,
+.service-card ul { padding: 0 2rem; }
+.service-card ul { padding-bottom: 2rem; }
+
+/* 6 張卡片各配漸層底色 */
+.service-card:nth-child(1) { background: linear-gradient(180deg, #eef5f8 0%, white 45%); }
+.service-card:nth-child(2) { background: linear-gradient(180deg, #fef8ed 0%, white 45%); }
+.service-card:nth-child(3) { background: linear-gradient(180deg, #f5eff8 0%, white 45%); }
+.service-card:nth-child(4) { background: linear-gradient(180deg, #eef8f8 0%, white 45%); }
+.service-card:nth-child(5) { background: linear-gradient(180deg, #fef0f2 0%, white 45%); }
+.service-card:nth-child(6) { background: linear-gradient(180deg, #eff8ef 0%, white 45%); }
+
+/* 讓卡片內容在大螢幕上讀起來更舒服 */
+.service-card {
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+.service-card:hover {
+  border-left-color: var(--amber);
+  border-color: var(--amber) !important;
+}
+
+.service-icon {
+  transition: all 0.3s ease;
+}
+.service-card:hover .service-icon {
+  transform: scale(1.08);
+}
+
+.service-card h4 {
+  font-size: 1.2rem;
+}
+.service-card li {
+  font-size: 0.92rem;
+}
+
+/* ── 5. CTA 按鈕強化 ── */
+.btn-primary,
+.hero-btn {
+  background: var(--amber) !important;
+  border-color: var(--amber) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover,
+.hero-btn:hover {
+  background: #d4892a !important;
+  border-color: #d4892a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(241, 156, 50, 0.35) !important;
+}
+
+.btn-outline-primary {
+  color: var(--teal) !important;
+  border-color: var(--teal) !important;
+}
+.btn-outline-primary:hover {
+  background: var(--teal) !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* ── 6. Section 裝飾強化 ── */
+.section-divider {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(to right, var(--teal), var(--amber));
+}
+
+/* ── 7. 區塊間距微調 ── */
+.py-5 {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+/* ── 8. Mobile 微調 ── */
+@media (max-width: 768px) {
+  .service-card h4 { font-size: 1.1rem; }
+  .service-image { height: 120px; }
+  .hero-section { padding: 100px 0 60px; }
+}
