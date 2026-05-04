@@ -130,33 +130,23 @@ function initForms() {
     }
 }
 
-// 預約表單處理
+// 預約表單處理（使用 FormSubmit.co）
 function initAppointmentForm() {
     const appointmentForm = document.getElementById('appointment-form');
     if (appointmentForm) {
+        // 表單已有 action 指向 FormSubmit，submit 沖由 HTML 處理
+        // 僅保留客戶端驗證（防止空表單提交）
         appointmentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            const name = document.getElementById('name')?.value.trim();
+            const phone = document.getElementById('phone')?.value.trim();
+            const date = document.getElementById('date')?.value;
+            const service = document.getElementById('service')?.value;
             
-            // 取得表單資料
-            const patientName = document.getElementById('patient-name')?.value.trim();
-            const patientPhone = document.getElementById('patient-phone')?.value.trim();
-            const appointmentDate = document.getElementById('appointment-date')?.value;
-            const appointmentTime = document.getElementById('appointment-time')?.value;
-            const symptoms = document.getElementById('symptoms')?.value.trim();
-            
-            if (!patientName || !patientPhone || !appointmentDate || !appointmentTime) {
-                showAlert('請填寫所有必填欄位（姓名、電話、預約日期、時間）', 'danger');
-                return;
+            if (!name || !phone || !date || !service) {
+                e.preventDefault();
+                showAlert('請填寫所有必填欄位（姓名、電話、預約日期、服務項目）', 'danger');
             }
-            
-            // 顯示成功訊息
-            showAlert(`預約成功！${patientName} 先生/女士，您的預約時間為 ${appointmentDate} ${appointmentTime}，我們會電話確認。`, 'success');
-            
-            // 重置表單
-            appointmentForm.reset();
-            
-            // 在實際應用中，這裡會發送預約資料到後端
-            // sendAppointmentData({ patientName, patientPhone, appointmentDate, appointmentTime, symptoms });
+            // 驗證通過 → 不 preventDefault，讓 FormSubmit 處理
         });
     }
 }

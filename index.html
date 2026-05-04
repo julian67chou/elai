@@ -557,31 +557,34 @@
 </div>
 <div class="col-md-6">
 <h5 class="mb-4">線上預約</h5>
-<form id="appointment-form">
+<form id="appointment-form" action="https://formsubmit.co/yilifeclinic@gmail.com" method="POST">
 <div class="mb-3">
 <label for="name" class="form-label">姓名</label>
-<input type="text" class="form-control" id="name" required>
+<input type="text" class="form-control" id="name" name="姓名" required>
 </div>
 <div class="mb-3">
 <label for="phone" class="form-label">電話</label>
-<input type="tel" class="form-control" id="phone" required>
+<input type="tel" class="form-control" id="phone" name="電話" required>
 </div>
 <div class="mb-3">
 <label for="date" class="form-label">預約日期</label>
-<input type="date" class="form-control" id="date" required>
+<input type="date" class="form-control" id="date" name="預約日期" required>
 </div>
 <div class="mb-3">
 <label for="service" class="form-label">服務項目</label>
-<select class="form-select" id="service">
+<select class="form-select" id="service" name="服務項目">
 <option value="">請選擇服務項目</option>
-<option value="molecular">分子點滴治療</option>
-<option value="eecp">EECP體外反搏治療</option>
-<option value="sis">SIS磁場治療</option>
-<option value="laser">靜脈雷射</option>
-<option value="hydrogen">氫氣治療</option>
-<option value="consultation">整合輔助醫學諮詢</option>
+<option value="分子點滴治療">分子點滴治療</option>
+<option value="EECP體外反搏治療">EECP體外反搏治療</option>
+<option value="SIS磁場治療">SIS磁場治療</option>
+<option value="靜脈雷射">靜脈雷射</option>
+<option value="氫氣治療">氫氣治療</option>
+<option value="整合輔助醫學諮詢">整合輔助醫學諮詢</option>
 </select>
 </div>
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://www.yilife-clinic.com.tw/thanks.html">
+<input type="hidden" name="_subject" value="伊萊診所線上預約">
 <button type="submit" class="btn btn-primary w-100">
 <i class="bi bi-send"></i> 送出預約
 </button>
@@ -662,22 +665,17 @@
 <!-- 預約表單處理 -->
 <script>
 document.getElementById('appointment-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // 簡單的表單驗證
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
   const date = document.getElementById('date').value;
   const service = document.getElementById('service').value;
   
   if (!name || !phone || !date || !service) {
+    e.preventDefault();
     alert('請填寫所有必填欄位');
     return;
   }
-  
-  // 這裡可以加入實際的表單提交邏輯
-  alert('預約已送出！我們將儘快與您聯繫確認。');
-  this.reset();
+  // 驗證通過 → 讓 FormSubmit 處理後續（無需 e.preventDefault()）
 });
 </script>
 
